@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script type="module" src="index.js"></script>
+        <title>Document</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100vmin;
+            }
+
+            body:after {
+                content: "click to update";
+                font-size: 0.8em;
+                color: rgba(0, 0, 0, 0.3);
+                position: fixed;
+                width: 100%;
+                bottom: 1em;
+                text-align: center;
+            }
+
+            #cloud {
+                overflow: hidden;
+                width: 1px;
+                height: 1px;
+                transform: translate(-100%, -100%);
+                border-radius: 50%;
+                filter: url(#filter);
+                z-index: 0;
+            }
+
+            #effect {
+                /* z-index: 1; */
+            }
+
+            .menu {
+                position: relative;
+                height: 50px;
+                color: white;
+                background-color: black;
+            }
+
+            .stimuli_container {
+                text-align: center;
+                display: block;
+                position: relative;
+            }
+
+            .stimuli {
+                /* z-index: 2; */
+                display: inline-block;
+                position: relative;
+                width: 90vmin;
+                height: 90vmin;
+                overflow: hidden;
+            }
+
+            .stimuli_svg {
+                display: inline-block;
+                position: absolute;
+                top: 0px;
+                left: 0;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="menu">
+            <div>Finding Ts!</div>
+        </div>
+        <div id="cloud"></div>
+        <svg id="effect" width="0" height="0">
+            <filter id="filter">
+                <feTurbulence
+                    type="fractalNoise"
+                    baseFrequency=".01"
+                    numOctaves="10"
+                />
+                <feDisplacementMap in="SourceGraphic" scale="240" />
+            </filter>
+        </svg>
+        <div class="stimuli_container">
+            <div class="stimuli">
+                <svg
+                    viewBox="0 0 100 100"
+                    preserveAspectRatio="xMinYMin meet"
+                    class="stimuli_svg"
+                >
+                    <circle cx="30" cy="30" r="5" fill="black" />
+                </svg>
+            </div>
+        </div>
+    </body>
+</html>
