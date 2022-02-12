@@ -3,69 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style/style.css" />
         <script type="module" src="main.js"></script>
-        <title>Document</title>
-        <style>
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                min-height: 100vmin;
-            }
-
-            body:after {
-                content: "click to update";
-                font-size: 0.8em;
-                color: rgba(0, 0, 0, 0.3);
-                position: fixed;
-                width: 100%;
-                bottom: 1em;
-                text-align: center;
-            }
-
-            #cloud {
-                overflow: hidden;
-                width: 1px;
-                height: 1px;
-                transform: translate(-100%, -100%);
-                border-radius: 50%;
-                filter: url(#filter);
-                z-index: 0;
-            }
-
-            #effect {
-                /* z-index: 1; */
-            }
-
-            .menu {
-                position: relative;
-                height: 50px;
-                color: white;
-                background-color: black;
-            }
-
-            .stimuli_container {
-                text-align: center;
-                display: block;
-                position: relative;
-            }
-
-            .stimuli {
-                /* z-index: 2; */
-                display: inline-block;
-                position: relative;
-                width: 90vmin;
-                height: 90vmin;
-                overflow: hidden;
-            }
-
-            .stimuli_svg {
-                display: inline-block;
-                position: absolute;
-                top: 0px;
-                left: 0;
-            }
-        </style>
+        <title>PL Task</title>
     </head>
 
     <body>
