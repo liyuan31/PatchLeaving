@@ -1,4 +1,5 @@
-import Display from "./display";
+import Display from "./display.js";
+
 /**
  * DisplayWidget is a class that encapsulates the logic for the visual display.
  *
@@ -26,9 +27,7 @@ export default class DisplayWidget {
             .append("svg")
             .attr("viewBox", size)
             .attr("preserveAspectRatio", "xMinYMin meet")
-            .attr("class", "ace_svg_content_responsive");
-        // TODO: a previously included event listener
-        // window.addEventListener("resize", this.show.bind(this));  // redraw the graphic if the window resizes.
+            .attr("class", "stimuli_svg");
     }
 
     set_cue(cue) {
@@ -41,8 +40,7 @@ export default class DisplayWidget {
 
     /** A method to destroy this widget object. */
     destroy() {
-        this.parent.selectAll(".svg_container").remove();
-        // window.removeEventListener("resize", this.show.bind(this));
+        this.parent.selectAll(".stimuli").remove();
         return undefined;
     }
 
