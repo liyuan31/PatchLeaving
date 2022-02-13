@@ -5,8 +5,8 @@
  * @version 1.0 (2/11/2022)
  */
 
-import Display from "./display";
-import { Line } from "./shape";
+import Display from "./display.js";
+import { Line } from "./shape.js";
 
 /**
  *
@@ -14,21 +14,25 @@ import { Line } from "./shape";
  * @param {number} y : y coordinate of the center of the shape
  * @param {number} orientation : 0, 1, 2, 3 for right, up, left, down
  */
-export function create_a_T(x, y, orientation) {
+export function create_a_T(
+    x,
+    y,
+    orientation,
+    headWid,
+    tailLen,
+    strokeWid,
+    strokeCol
+) {
     const result = new Display();
     // Draw the tail
     result.add_a_line(
         new Line(
-            x -
-                (this._setting.T_tail_length + this._setting.TL_stroke_width) /
-                    2,
+            x - (tailLen + strokeWid) / 2,
             y,
-            x +
-                (this._setting.T_tail_length + this._setting.TL_stroke_width) /
-                    2,
+            x + (tailLen + strokeWid) / 2,
             y,
-            this._setting.TL_stroke_color,
-            this._setting.TL_stroke_width,
+            strokeCol,
+            strokeWid,
             undefined,
             undefined,
             `rotate(${orientation * -90}, ${x}, ${y})`
@@ -37,12 +41,12 @@ export function create_a_T(x, y, orientation) {
     // Draw the head
     result.add_a_line(
         new Line(
-            x - this._setting.T_tail_length / 2,
-            y - this._setting.T_head_width / 2,
-            x - this._setting.T_tail_length / 2,
-            y + this._setting.T_head_width / 2,
-            this._setting.TL_stroke_color,
-            this._setting.TL_stroke_width,
+            x - tailLen / 2,
+            y - headWid / 2,
+            x - tailLen / 2,
+            y + headWid / 2,
+            strokeCol,
+            strokeWid,
             undefined,
             undefined,
             `rotate(${orientation * -90}, ${x}, ${y})`
