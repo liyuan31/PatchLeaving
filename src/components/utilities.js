@@ -14,6 +14,14 @@ export function randi(min, max, inclusive = false) {
     }
 }
 
+export function rand_float(min, max, inclusive = false) {
+    if (inclusive == false) {
+        return Math.random() * (max - min) + min;
+    } else {
+        return Math.random() * (max - min + 1) + min;
+    }
+}
+
 export function shuffle(arr) {
     let j = undefined;
     let k = undefined;
