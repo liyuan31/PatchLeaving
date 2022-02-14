@@ -5,15 +5,14 @@ body {
     min-height: 100vmin;
 }
 
-body:after {
-    content: "click to update";
+/* body:after {
     font-size: 0.8em;
     color: rgba(0, 0, 0, 0.3);
     position: fixed;
     width: 100%;
     bottom: 1em;
     text-align: center;
-}
+} */
 
 #cloud {
     overflow: hidden;
@@ -23,10 +22,6 @@ body:after {
     border-radius: 50%;
     filter: url(#filter);
     z-index: 0;
-}
-
-#effect {
-    /* z-index: 1; */
 }
 
 .menu {
@@ -43,11 +38,9 @@ body:after {
 }
 
 .stimuli {
-    /* z-index: 2; */
     display: inline-block;
     position: relative;
-    width: 90vmin;
-    height: 90vmin;
+    height: 80vmin;
     overflow: hidden;
 }
 
