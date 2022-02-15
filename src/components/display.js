@@ -84,7 +84,7 @@ export default class Display {
     }
 
     duplicate() {
-        return new disp.DisplayDataset(
+        return new Display(
             JSON.parse(JSON.stringify(this.lines)),
             JSON.parse(JSON.stringify(this.texts)),
             JSON.parse(JSON.stringify(this.rects)),
@@ -94,19 +94,19 @@ export default class Display {
     }
 
     /**
-     * Merge the current <DisplayDataset> with another one.
+     * Merge the current <Display> with another one.
      *
-     * @param {disp.DisplayDataset} dispDataset : the <DisplayDataset> to be merged in
-     * @param {boolean} remove : if dispDataset should be deleted after being merged in
+     * @param {Display} display : the <Display> to be merged in
+     * @param {boolean} remove : if display should be deleted after being merged in
      */
-    merge(dispDataset, remove = true) {
-        this.add_lines(dispDataset.lines);
-        this.add_texts(dispDataset.texts);
-        this.add_rects(dispDataset.rects);
-        this.add_circles(dispDataset.circles);
-        this.add_polygons(dispDataset.polygons);
+    merge(display, remove = true) {
+        this.add_lines(display.lines);
+        this.add_texts(display.texts);
+        this.add_rects(display.rects);
+        this.add_circles(display.circles);
+        this.add_polygons(display.polygons);
         if (remove) {
-            dispDataset = null;
+            display = null;
         }
     }
 }
