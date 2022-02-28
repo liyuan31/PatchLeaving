@@ -1,6 +1,6 @@
 import Display from "./display.js";
 import * as s from "./settings.js";
-import { Line } from "./shape.js";
+import { Line, Rect } from "./shape.js";
 import * as util from "./utilities.js";
 
 export default function generate_display(nTargs) {
@@ -97,7 +97,7 @@ function create_a_T(x, y, orientation, headWid, tailLen, strokeWid, strokeCol) {
             strokeCol,
             strokeWid,
             "T",
-            `T_${x.toFixed(2)}_${y.toFixed(2)}`,
+            `T_x_${x.toFixed(2)}_y_${y.toFixed(2)}_1`,
             `rotate(${orientation * -90}, ${x}, ${y})`
         ) // counter-clockwise rotation
     );
@@ -110,9 +110,22 @@ function create_a_T(x, y, orientation, headWid, tailLen, strokeWid, strokeCol) {
             y + headWid / 2,
             strokeCol,
             strokeWid,
-            undefined,
-            undefined,
+            "T",
+            `T_x_${x.toFixed(2)}_y_${y.toFixed(2)}_2`,
             `rotate(${orientation * -90}, ${x}, ${y})`
+        )
+    );
+    // Add an overlaying rect
+    const w = s.overlaying_rect_width;
+    result.add_a_rect(
+        new Rect(
+            x - w / 2,
+            y - w / 2,
+            w,
+            w,
+            "transparent",
+            "T",
+            `T_x_${x.toFixed(2)}_y_${y.toFixed(2)}_0`
         )
     );
     return result;
