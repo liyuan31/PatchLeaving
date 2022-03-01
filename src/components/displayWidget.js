@@ -62,7 +62,7 @@ export default class DisplayWidget {
      * @param {string} y y coordinate for the text
      * @param {string} size font size
      */
-    show_feedback(text, x = "50", y = "50", size = "2pt") {
+    show_feedback(text, x = "50", y = "40", size = "2pt") {
         this.clear();
         this.svg
             .append("text")
