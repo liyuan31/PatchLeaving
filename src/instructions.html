@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"
+        ></script>
+        <!-- JQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <title>Task Instructions | CCLab Experiments</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row" style="text-align: center; margin-top: 20px">
+                <div class="col-sm">
+                    <button class="prev" onclick="prev_handler()">Prev</button>
+                </div>
+                <div class="col-sm">
+                    <button
+                        class="start"
+                        onclick="redirect()"
+                        style="display: none"
+                    >
+                        Start Task
+                    </button>
+                </div>
+                <div class="col-sm">
+                    <button class="next" onclick="next_handler()">Next</button>
+                </div>
+            </div>
+            <div class="row" style="margin: auto; width: 80%">
+                <img id="instr" src="./public/img/Slide1.jpeg" />
+            </div>
+            <div class="row" style="text-align: center; margin: 20px 0px">
+                <div class="col-sm">
+                    <button class="prev" onclick="prev_handler()">Prev</button>
+                </div>
+                <div class="col-sm">
+                    <button
+                        class="start"
+                        onclick="redirect()"
+                        style="display: none"
+                    >
+                        Start Task
+                    </button>
+                </div>
+                <div class="col-sm">
+                    <button class="next" onclick="next_handler()">Next</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            const total = 7;
+            let curr_slide = 1;
+            function render() {
+                document
+                    .getElementById("instr")
+                    .setAttribute(
+                        "src",
+                        `./public/img/Slide${curr_slide}.jpeg`
+                    );
+                if (curr_slide == 7) {
+                    $("button.start").css("display", "");
+                } else {
+                    $("button.start").css("display", "none");
+                }
+            }
+            function prev_handler() {
+                curr_slide > 1 ? (curr_slide -= 1) : undefined;
+                render();
+            }
+            function next_handler() {
+                curr_slide < total ? (curr_slide += 1) : undefined;
+                render();
+            }
+            function redirect() {
+                window.location.href = "task.html" + window.location.search;
+            }
+        </script>
+    </body>
+</html>
