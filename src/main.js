@@ -31,6 +31,7 @@ import { check_fullscreen } from "./components/screen.js";
         window_load_timestamp: Math.round(performance.now()),
         exp_start_timestamp: 0,
         trials_data: [],
+        bonus: 0,
     };
 
     /**
