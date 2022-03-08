@@ -105,7 +105,6 @@ import { check_fullscreen } from "./components/screen.js";
                 // clear temp trial data array
                 targ_times = [];
                 target_identities = [];
-                console.log(data.trials_data);
                 // remove all click listeners
                 d3.selectAll("line, rect").on("click", undefined);
                 // show target information
