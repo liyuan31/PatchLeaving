@@ -170,6 +170,7 @@ import { check_fullscreen } from "./components/screen.js";
     }
 
     function end_experiment() {
+        data.bonus = n_total_targets_clicked / 100;
         $.ajax({
             type: "POST",
             url: post_link,
