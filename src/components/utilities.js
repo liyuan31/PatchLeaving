@@ -14,7 +14,7 @@ export function randi(min, max, inclusive = false) {
     }
 }
 
-export function rand_float(min, max, inclusive = false) {
+export function rand(min, max, inclusive = false) {
     if (inclusive == false) {
         return Math.random() * (max - min) + min;
     } else {
