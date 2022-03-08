@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            #banner {
+                margin: 4%;
+                text-align: center;
+            }
+        </style>
+        <title>End of Experiment | CCLab Experiments</title>
+    </head>
+
+    <body>
+        <div class="container" style="width: 70%">
+            <div class="row">
+                <h1 style="text-align: center">Thank you for participating!</h1>
+            </div>
+            <div class="row">
+                <p>
+                    The total amount of extra credit you get is $<strong>
+                        <span id="bonus_amount"></span></strong
+                    >. Please expect it to be awarded within 24 hours from now.
+                </p>
+                <p>
+                    If this is a two-session experiment, we will send you a
+                    reminder to participate in several days.
+                </p>
+                <p>
+                    If you have any questions, please contact us at
+                    cognitivecontrol@osu.edu. Thank you again for your
+                    participation!
+                </p>
+                <p>
+                    Click the following button to go back, or you will be
+                    redirected automatically in 10 seconds...
+                </p>
+            </div>
+            <div
+                class="col"
+                id="button-col"
+                style="margin-bottom: 40px; text-align: center"
+            >
+                <button type="button" class="btn btn-primary" id="back-btn">
+                    Go back to Prolific
+                </button>
+            </div>
+        </div>
+    </body>
+    <script>
+        const URLParams = new URLSearchParams(window.location.search);
+        document.getElementById("bonus_amount").innerHTML =
+            URLParams.get("bonus");
+        document.getElementById("back-btn").addEventListener("click", () => {
+            window.location.href =
+                "https://app.prolific.co/submissions/complete?cc=71AB0EC4";
+        });
+        setTimeout(() => {
+            window.location.href =
+                "https://app.prolific.co/submissions/complete?cc=71AB0EC4";
+        }, 10000);
+    </script>
+</html>
