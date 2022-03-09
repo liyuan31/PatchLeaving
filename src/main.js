@@ -173,12 +173,12 @@ import { check_fullscreen } from "./components/screen.js";
         data.bonus = n_total_targets_clicked / 100;
         $.ajax({
             type: "POST",
-            url: post_link,
+            url: `${post_link}${window.location.search}`,
             data: {
                 data: JSON.stringify(data),
             },
             success: () => {
-                window.location.href = `debriefing.html${
+                window.location.href = `survey.html${
                     window.location.search
                 }&bonus=${n_total_targets_clicked / 100}`;
             },
