@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Bootstrap -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+            crossorigin="anonymous"
+        ></script>
+        <!-- JQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+        ></script>
+        <title>Post-Experiment Survey | CCLab Experiments</title>
+    </head>
+    <body>
+        <div class="container" style="width: 70%">
+            <div class="row" style="text-align: center">
+                <h1>Post-Experiment Survey</h1>
+                <p>
+                    Thank you for completing our study! The final part of this
+                    study is a brief survey. Your response will not affect your
+                    reward in this study.
+                </p>
+            </div>
+            <div class="row">
+                <form>
+                    <h4>1. What is your age?</h4>
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        min="18"
+                        max="40"
+                        value="18"
+                    />
+                    <h4>2. What is your gender?</h4>
+                    <input
+                        type="radio"
+                        id="gender_1"
+                        name="gender"
+                        value="female"
+                    />
+                    <label for="gender_1">Female</label>
+                    <input
+                        type="radio"
+                        id="gender_2"
+                        name="gender"
+                        value="male"
+                    />
+                    <label for="gender_2">Male</label>
+                    <input
+                        type="radio"
+                        id="gender_3"
+                        name="gender"
+                        value="nonbinary"
+                    />
+                    <label for="gender_3">Non-binary</label>
+                    <input
+                        type="radio"
+                        id="gender_4"
+                        name="gender"
+                        value="declined"
+                    />
+                    <label for="gender_4"
+                        >Other options/Prefer not to answer</label
+                    >
+
+                    <h4>3. What browser did you use in this study?</h4>
+                    <input
+                        type="radio"
+                        id="browser_1"
+                        name="browser"
+                        value="brave"
+                    />
+                    <label for="browser_1">Brave</label>
+                    <input
+                        type="radio"
+                        id="browser_2"
+                        name="browser"
+                        value="chrome"
+                    />
+                    <label for="browser_2">Chrome</label>
+                    <input
+                        type="radio"
+                        id="browser_3"
+                        name="browser"
+                        value="edge"
+                    />
+                    <label for="browser_3">Edge</label>
+                    <input
+                        type="radio"
+                        id="browser_4"
+                        name="browser"
+                        value="firefox"
+                    />
+                    <label for="browser_4">Firefox</label>
+                    <input
+                        type="radio"
+                        id="browser_5"
+                        name="browser"
+                        value="other"
+                    />
+                    <label for="browser_5">Other browsers not listed</label>
+                    <h4>4. What input device did you use in this study?</h4>
+                    <input
+                        type="radio"
+                        id="device_1"
+                        name="device"
+                        value="mouse"
+                    />
+                    <label for="device_1">A physical mouse</label>
+                    <input
+                        type="radio"
+                        id="device_2"
+                        name="device"
+                        value="touch"
+                    />
+                    <label for="device_2">A touchscreen</label>
+                    <input
+                        type="radio"
+                        id="device_3"
+                        name="device"
+                        value="trackpad"
+                    />
+                    <label for="device_3">A trackpad</label>
+                </form>
+                <div
+                    class="col"
+                    id="button-col"
+                    style="margin-bottom: 40px; text-align: center"
+                >
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-lg"
+                        id="consent-btn"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script>
+            document
+                .getElementById("consent-btn")
+                .addEventListener("click", () => {
+                    const formData = new FormData(
+                        document.querySelector("form")
+                    );
+                    $.ajax({
+                        type: "POST",
+                        url: `receive.php${window.location.search}`,
+                        data: {
+                            form: {
+                                age: formData.get("age"),
+                                gender: formData.get("gender"),
+                                browser: formData.get("browser"),
+                                device: formData.get("device"),
+                            },
+                        },
+                        success: () => {
+                            window.location.href = `debriefing.html${window.location.search}`;
+                        },
+                        error: () => {
+                            alert("ERROR : ", e);
+                        },
+                    });
+                });
+        </script>
+    </body>
+</html>
