@@ -16,10 +16,17 @@
             fwrite($handle, serialize($_POST));
             fclose($handle);
         };
-    
+
         if (isset($_POST['data'])) {
             $hash = bin2hex(random_bytes(16));
             $fname = $dir.'/data_'.$hash.'.txt';
+            $handle = fopen($fname, "w");
+            fwrite($handle, serialize($_POST));
+            fclose($handle);
+        };
+        if (isset($_POST['form'])) {
+            $hash = bin2hex(random_bytes(16));
+            $fname = $dir.'/form_'.$hash.'.txt';
             $handle = fopen($fname, "w");
             fwrite($handle, serialize($_POST));
             fclose($handle);
@@ -32,10 +39,17 @@
             fwrite($handle, serialize($_POST));
             fclose($handle);
         };
-    
+
         if (isset($_POST['data'])) {
             $hash = bin2hex(random_bytes(16));
             $fname = 'data/data_'.$hash.'.txt';
+            $handle = fopen($fname, "w");
+            fwrite($handle, serialize($_POST));
+            fclose($handle);
+        };
+        if (isset($_POST['form'])) {
+            $hash = bin2hex(random_bytes(16));
+            $fname = 'data/form_'.$hash.'.txt';
             $handle = fopen($fname, "w");
             fwrite($handle, serialize($_POST));
             fclose($handle);
